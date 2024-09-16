@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Görselin yolu */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .button {
+            background-color: grey; /* Butonların arka plan rengini gri yapar */
+            color: white; /* Buton metninin rengini beyaz yapar */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px; /* Kenarların oval olması için */
+            cursor: pointer;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Butonlar arasındaki boşluk */
+            margin-bottom: 20px;
+        }
+        .square-button {
+            width: 40px; /* Kare butonların genişliği */
+            height: 40px; /* Kare butonların yüksekliği */
+            background-color: grey;
+            border-radius: 8px; /* Kenarların hafif oval olması için */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .square-button img {
+            max-width: 70%; /* Logoların boyutunu küçültmek için */
+            max-height: 70%;
+        }
+        .price-info {
+            display: none; /* Başlangıçta gizli */
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+            box-sizing: border-box; /* Padding'in genişliği hesaplamaya dahil edilmesi için */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .price-info.show {
+            display: block;
+            max-height: 500px; /* Açıldığında yükseklik ayarı */
+        }
+        .price-info p {
+            margin: 5px 0; /* Her satır arasına boşluk ekler */
+        }
+        .announcement {
+            background-color: rgba(255, 255, 255, 0.2); /* Duyuru alanının arka plan rengi */
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            color: white;
+        }
+        .announcement h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .announcement p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <div class="square-button" onclick="window.location.href='https://t.me/cc4rd';">
+                <img src="logo1.png" alt="Logo 1">
+            </div>
+            <button class="button" onclick="togglePriceInfo()">Ürünler</button>
+            <div class="square-button" onclick="window.location.href='https://www.tiktok.com/@cc4rd1';">
+                <img src="logo2.png" alt="Logo 2">
+            </div>
+        </div>
+        
+        <div id="priceInfo" class="price-info">
+            <p><strong>Güncel Clone C4rd</strong></p>
+            <p>1.500 Dolar - 4.000 TL</p>
+            <p>2.000 Dolar - 6.000 TL</p>
+            <p>3.000 Dolar - 7.200 TL</p>
+            <p>4.500 Dolar - 8.500 TL</p>
+            <p>5.500 Dolar - 9.800 TL</p>
+        </div>
+
+        <div id="iphoneInfo" class="price-info">
+            <p><strong>Güncel İphones</strong></p>
+            <p>İphone 12 - 258 GB: 8.000 TL</p>
+            <p>İphone 13 - 258 GB: 12.000 TL</p>
+            <p>İphone 14 - 258 GB: 14.000 TL</p>
+            <p>İphone 15 - 258 GB: 20.000 TL</p>
+            <p>Pro Seçenekleri: +300 TL</p>
+            <p>Max Özellikleri: +500 TL</p>
+        </div>
+
+        <!-- Altın fiyatları kısmı -->
+        <div id="goldInfo" class="price-info">
+            <p><strong>Güncel Altın Fiyatları</strong></p>
+            <p>1GR ALTIN : 1.400₺</p>
+            <p>2GR ALTIN : 2.500₺</p>
+            <p>5GR ALTIN : 4.700₺</p>
+            <p>10GR ALTIN : 6.800₺</p>
+        </div>
+
+        <div class="announcement">
+            <h3>Duyuru</h3>
+            <p>Bu alan, sitedeki duyurular için ayrılmıştır. Güncel kampanyalar, indirimler ve önemli bilgiler burada paylaşılacaktır.</p>
+        </div>
+    </div>
+
+    <script>
+        function togglePriceInfo() {
+            var priceInfo = document.getElementById("priceInfo");
+            var iphoneInfo = document.getElementById("iphoneInfo");
+            var goldInfo = document.getElementById("goldInfo");
+
+            if (priceInfo.classList.contains('show')) {
+                priceInfo.classList.remove('show');
+                priceInfo.style.maxHeight = "0";
+            } else {
+                priceInfo.classList.add('show');
+                priceInfo.style.maxHeight = priceInfo.scrollHeight + "px";
+            }
+
+            if (iphoneInfo.classList.contains('show')) {
+                iphoneInfo.classList.remove('show');
+                iphoneInfo.style.maxHeight = "0";
+            } else {
+                iphoneInfo.classList.add('show');
+                iphoneInfo.style.maxHeight = iphoneInfo.scrollHeight + "px";
+            }
+
+            if (goldInfo.classList.contains('show')) {
+                goldInfo.classList.remove('show');
+                goldInfo.style.maxHeight = "0";
+            } else {
+                goldInfo.classList.add('show');
+                goldInfo.style.maxHeight = goldInfo.scrollHeight + "px";
+            }
+        }
+    </script>
+</body>
+</html>
